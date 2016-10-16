@@ -24,3 +24,12 @@ Arduino is in trigger mode upon start - Send __C__ to enter command mode
 ## Schematics
 
 ![Schematics](https://www.kompf.de/tech/images/reflsensor.png)
+
+## Sync with meter
+
+A new database starts with 0 in the countervalue. To sync the database with the meter, just note the value (e.g 56122.0) and use following command to update the RRD-File.
+
+    rrdtool update emeir.rrd N:56122.0:0
+
+After the Update, just restart wairc.py. It will read the saved meter value from the Database and continue counting.
+
